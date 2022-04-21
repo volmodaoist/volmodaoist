@@ -18,3 +18,21 @@ Here are some ideas to get you started:
 -->
 [![ultiltaoist's GitHub stats](https://github-readme-stats.vercel.app/api?username=ultiltaoist)](https://github.com/ultiltaoist)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ultiltaoist)](https://github.com/ultiltaoist)
+
+
+<p align="center">
+  <i>Take a look at my repositories and let's get in touch!</i>
+
+<p align="center">
+<a href= "https://github.com/halfrost/Halfrost-Field/"><img src="https://img.icons8.com/material-outlined/27/000000/ball-point-pen.png"/></a>
+<a href= "https://www.linkedin.com/in/halffrost/"><img src="https://img.icons8.com/material-outlined/30/000000/linkedin.png"/></a>
+<a href= "https://twitter.com/halffrost"><img src="https://img.icons8.com/material-outlined/30/000000/twitter.png"/></a>
+<a href= "https://halfrost.com"><img src="https://img.icons8.com/material-outlined/27/000000/geography.png"/></a>
+</p>
+
+<p  align="center">
+<!--<img src="https://visitor-badge.glitch.me/badge?page_id=halfrost.halfrost" alt="visitor badge"/>-->
+<img src="https://visitor-badge.laobi.icu/badge?page_id=halfrost.halfrost" alt="visitor badge"/>       
+</p>
+
+</p>
