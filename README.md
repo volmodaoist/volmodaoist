@@ -14,6 +14,7 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 - 通过这个链接能够获取一些有趣的模块: https://github.com/anuraghazra/github-readme-stats
+- 通过这个链接能够获取一些有趣的标徽：https://shields.io/
 -->
-[![ultiltaoist's GitHub stats](https://github-readme-stats.vercel.app/api?username=ultiltaoist)](https://github.com/anuraghazra/github-readme-stats)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ultiltaoist)](https://github.com/anuraghazra/github-readme-stats)
+[![ultiltaoist's GitHub stats](https://github-readme-stats.vercel.app/api?username=ultiltaoist)](https://github.com/ultiltaoist)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ultiltaoist)](https://github.com/ultiltaoist)
