@@ -60,6 +60,9 @@ Here are some ideas to get you started:
 <img alt="Stars" src="https://img.shields.io/github/stars/ultiltaoist/ultiltaoist?style=flat-square&labelColor=343b41"/> 
 <img alt="Forks" src="https://img.shields.io/github/forks/ultiltaoist/ultiltaoist?style=flat-square&labelColor=343b41"/></p>
 
-<img src="https://github-profile-trophy.vercel.app/?username=khalby786&theme=nord&no-frame=true&margin-w=10&column=7" />
+<p  align="center">
+    <img src="https://github-profile-trophy.vercel.app/?username=ultiltaoist&theme=nord&no-frame=true&margin-w=10&column=7" />
+</p>
+
 </p>
 </p>
