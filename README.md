@@ -35,8 +35,9 @@ Here are some ideas to get you started:
 <!--<img src="https://visitor-badge.glitch.me/badge?page_id=ultiltaoist.ultiltaoist" alt="visitor badge"/>-->
 <img src="https://visitor-badge.laobi.icu/badge?page_id=ultiltaoist.ultiltaoist" alt="visitor badge"/>       
 
-<p align="center">This <i>README</i> file is generated <b>every 3 hours</b>!</br>Last refresh: Tuesday, 5 April, 11:07 CEST<br /><a href="https://medium.com/@th.guibert/how-to-create-a-self-updating-readme-md-for-your-github-profile-f8b05744ca91">Create your own here!</a></p>
-<p align="center"><img src="https://github.com/thmsgbrt/thmsgbrt/workflows/README%20build/badge.svg" /> <img alt="Stars" src="https://img.shields.io/github/stars/thmsgbrt/thmsgbrt?style=flat-square&labelColor=343b41"/> <img alt="Forks" src="https://img.shields.io/github/forks/thmsgbrt/thmsgbrt?style=flat-square&labelColor=343b41"/></p>
+<img src="https://github.com/thmsgbrt/thmsgbrt/workflows/README%20build/badge.svg" /> 
+<img alt="Stars" src="https://img.shields.io/github/stars/thmsgbrt/thmsgbrt?style=flat-square&labelColor=343b41"/> 
+<img alt="Forks" src="https://img.shields.io/github/forks/thmsgbrt/thmsgbrt?style=flat-square&labelColor=343b41"/></p>
 
 </p>
 </p>
