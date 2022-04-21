@@ -84,8 +84,8 @@ Here are some ideas to get you started:
 </summary>
 
 <!-- 1. 综合版块 -->
-[![ultiltaoist's GitHub stats](https://github-readme-stats.vercel.app/api?username=ultiltaoist&show_icons=true)](https://github.com/ultiltaoist)
-
+<!-- 链接里面添加 show_icons=true 参数即可显示图标 -->
 <!-- 2. 使用什么语言 -->
+[![ultiltaoist's GitHub stats](https://github-readme-stats.vercel.app/api?username=ultiltaoist)](https://github.com/ultiltaoist)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ultiltaoist&layout=compact)](https://github.com/ultiltaoist)
 
