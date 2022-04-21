@@ -17,14 +17,6 @@ Here are some ideas to get you started:
 - 通过这个链接能够获取一些有趣的标徽：https://shields.io/
 -->
 
-
-<!-- 1. 综合版块 -->
-[![ultiltaoist's GitHub stats](https://github-readme-stats.vercel.app/api?username=ultiltaoist&show_icons=true)](https://github.com/ultiltaoist)
-
-<!-- 2. 使用什么语言 -->
-<!-- [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ultiltaoist&layout=compact)](https://github.com/ultiltaoist) -->
-
-
 <p align="center">
   <i>Take a look at my repositories and let's get in touch!</i>
 <p align="center">
@@ -86,4 +78,10 @@ Here are some ideas to get you started:
 <summary>
   点击此处查看更多关于道长的内容
 </summary>
+
+<!-- 1. 综合版块 -->
+[![ultiltaoist's GitHub stats](https://github-readme-stats.vercel.app/api?username=ultiltaoist&show_icons=true)](https://github.com/ultiltaoist)
+
+<!-- 2. 使用什么语言 -->
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ultiltaoist&layout=compact)](https://github.com/ultiltaoist)
 
