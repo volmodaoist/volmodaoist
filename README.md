@@ -51,23 +51,19 @@ Here are some ideas to get you started:
 
 
 <p  align="center">
-<!--<img src="https://visitor-badge.glitch.me/badge?page_id=volmodaoist.volmodaoist" alt="visitor badge"/>-->
-
-
-
-
-<p  align="center">
 <img src="https://github.com/thmsgbrt/thmsgbrt/workflows/README%20build/badge.svg" /> 
 <img src="https://visitor-badge.laobi.icu/badge?page_id=volmodaoist.volmodaoist" alt="visitor badge"/>
-<img alt="Forks" src="https://img.shields.io/github/forks/volmodaoist/volmodaoist?style=flat-square&labelColor=343b41"/></p>
-<!-- <img alt="Stars" src="https://img.shields.io/github/stars/volmodaoist/volmodaoist?style=flat-square&labelColor=343b41"/>  -->
-![](https://leetcode-badge.haozibi.dev/v1/ranking/dao-chang-3.svg)
-![](https://leetcode-badge.haozibi.dev/v1/solved/dao-chang-3.svg)
-![](https://leetcode-badge.haozibi.dev/v1/solved-rate/dao-chang-3.svg)
+<img alt="Forks" src="https://img.shields.io/github/forks/volmodaoist/volmodaoist?style=flat-square&labelColor=343b41"/>
+<img alt="Rank" src="https://leetcode-badge.haozibi.dev/v1cn/ranking/dao-chang-3.svg"/>
+<img alt="solved" src="https://leetcode-badge.haozibi.dev/v1cn/solved//dao-chang-3.svg"/>
+<img alt="solved-rate" src="https://leetcode-badge.haozibi.dev/v1cn/solved-rate/dao-chang-3.svg"/>
+</p>
 
 
-</p>
-</p>
+
+
+
+
 
 <details>
 <summary>
