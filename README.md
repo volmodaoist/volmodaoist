@@ -23,12 +23,14 @@ Here are some ideas to get you started:
 <p align="center"> 
 -->
 
+![Volmodaoist's GitHub activity graph](https://activity-graph.herokuapp.com/graph?username=volmodaoist&bg_color=ffffff&line=000000&point=9e4c98)
+
 <!-- 背景奖杯 + 各种参数面板 -->
 <p  align="center">
     <img src="https://github-profile-trophy.vercel.app/?username=volmodaoist&theme=nord&no-frame=true&margin-w=10&column=7" />
 </p>
 
-![Volmodaoist's GitHub activity graph](https://activity-graph.herokuapp.com/graph?username=volmodaoist&bg_color=ffffff&line=000000&point=9e4c98)
+
 
 <!-- 图标参考了这个链接：https://github.com/DenverCoder1/DenverCoder1 -->
 
