@@ -35,15 +35,15 @@ Here are some ideas to get you started:
 <!-- 图标参考了这个链接：https://github.com/DenverCoder1/DenverCoder1 -->
 
 <p align="center">
-<a alt = "力扣" href= "https://leetcode-cn.com/u/dao-chang-3/">
+<a alt = "力扣" title="力扣" href= "https://leetcode-cn.com/u/dao-chang-3/">
   <img src="https://img.icons8.com/material-outlined/27/000000/ball-point-pen.png"/></a>
-<a alt = "洛谷" href= "https://www.luogu.com.cn/user/330653#practice">
+<a alt = "洛谷" title="洛谷" href= "https://www.luogu.com.cn/user/330653#practice">
   <img src="https://img.icons8.com/material-outlined/27/000000/ball-point-pen.png"/></a>
-<a alt = "博客园" href= "https://www.cnblogs.com/taoist-chen/">
+<a alt = "博客园" title="博客园" href= "https://www.cnblogs.com/taoist-chen/">
   <img src="https://img.icons8.com/material-outlined/27/000000/ball-point-pen.png"/></a>
-<a alt = "vjudge" href= "https://vjudge.net/user/TaoistPriestC">
+<a alt = "vjudge" title="vjudge" href= "https://vjudge.net/user/TaoistPriestC">
   <img src="https://img.icons8.com/material-outlined/27/000000/ball-point-pen.png"/></a>
-<a alt = "CF" href= "https://codeforces.com/profile/TaoistPriestC">
+<a alt = "CF" title="CodeForce" href= "https://codeforces.com/profile/TaoistPriestC">
   <img src="https://img.icons8.com/material-outlined/27/000000/ball-point-pen.png"/></a>
 </p>
 
