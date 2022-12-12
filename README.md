@@ -23,7 +23,7 @@ Here are some ideas to get you started:
 <p align="center"> 
 -->
 
-![Volmodaoist's GitHub activity graph](https://activity-graph.herokuapp.com/graph?username=volmodaoist&bg_color=ffffff&line=000000&point=9e4c98)
+<!-- ![Volmodaoist's GitHub activity graph](https://activity-graph.herokuapp.com/graph?username=volmodaoist&bg_color=ffffff&line=000000&point=9e4c98) -->
 
 <!-- 背景奖杯 + 各种参数面板 -->
 <p  align="center">
