@@ -27,7 +27,7 @@ Here are some ideas to get you started:
 
 <!-- 背景奖杯 + 各种参数面板 -->
 <p  align="center">
-    <img src="https://github-profile-trophy.vercel.app/?username=volmodaoist&theme=nord&no-frame=true&margin-w=10&column=7" />
+    <img src="https://github-profile-trophy.vercel.app/?username=volmodaoist&theme=nord&no-frame=true&margin-w=10&column=8" />
 </p>
 
 
