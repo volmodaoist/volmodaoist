@@ -49,7 +49,7 @@ Here are some ideas to get you started:
 
 
 
-
+<!--
 <p  align="center">
 <img src="https://github.com/thmsgbrt/thmsgbrt/workflows/README%20build/badge.svg" /> 
 <img alt="Forks" src="https://img.shields.io/github/forks/volmodaoist/volmodaoist?style=flat-square&labelColor=343b41"/>
@@ -57,6 +57,7 @@ Here are some ideas to get you started:
 <img alt="solved" src="https://leetcode-badge.haozibi.dev/v1cn/solved//dao-chang-3.svg"/>
 <img alt="solved-rate" src="https://leetcode-badge.haozibi.dev/v1cn/solved-rate/dao-chang-3.svg"/>
 </p>
+-->
 
 
 
