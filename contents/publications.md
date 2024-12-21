@@ -6,6 +6,6 @@
 
 - Ke Wang, **Zicong Chen**, Mingjia Zhu, Zhetao Li, Jian Weng, Tianlong Gu (2024). Score-based Counterfactual Generation for Interpretable Medical Image Classification and Lesion Localization. **IEEE Transactions on Medical Imaging**. [[Paper]](https://doi.org/10.1109/TMI.2024.3375357)
   
-- Ke Wang, Xianting Huang, Cong Tan, Siu-Ming Yiu, **Zicong Chen**, Xiaolin Lei (2024). Optimizing Neural Network Training: A Markov Chain Approach for Resource Conservation. **IEEE Transactions on Artificial Intelligence**, 1-14. [[Paper]](https://doi.org/10.1109/TAI.2024.3413688)
+- Ke Wang, **Zicong Chen**, Mingjia Zhu, Zhetao Li, Jian Weng, Tianlong Gu (2024). Score-Based Counterfactual Generation for Interpretable Medical Image Classification and Lesion Localization. **IEEE Transactions on Medical Imaging**, 43(10), 3596-3607.  [[Paper]](https://doi.org/10.1109/TMI.2024.3375357)  
 
 - Dehua Zhou, Ziyu Song, **Zicong Chen**, Xianting Huang, Congming Ji, Saru Kumari, Chien-Ming Chen, Sachin Kumar (2025). Advancing Explainability of Adversarial Trained Convolutional Neural Networks for Robust Engineering Applications. **Engineering Applications of Artificial Intelligence**, 140, 109681. [[Paper]](https://doi.org/10.1016/j.engappai.2025.109681)
