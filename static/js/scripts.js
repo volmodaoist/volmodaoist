@@ -1,4 +1,5 @@
-const content_dir = 'contents/includes/'
+const content_dir = 'contents/'
+const content_includes_dir = 'contents/includes/'
 const config_file = 'config.yml'
 const section_names = ['home', 'publications', 'awards', 'projects']
 
@@ -47,7 +48,7 @@ window.addEventListener('DOMContentLoaded', event => {
     // Marked
     marked.use({ mangle: false, headerIds: false })
     section_names.forEach((name, idx) => {
-        fetch(content_dir + name + '.md')
+        fetch(content_includes_dir + name + '.md')
             .then(response => response.text())
             .then(markdown => {
                 const html = marked.parse(markdown);
