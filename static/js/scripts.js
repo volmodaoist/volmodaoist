@@ -1,7 +1,7 @@
-// 页面的所有内容是通过这个脚本渲染的
-const content_dir = 'contents';
-const config_file = 'config.yml';
-const section_names = ['home', 'publications', 'awards', 'volunteering'];
+const content_dir = 'contents/'
+const config_file = 'config.yml'
+const section_names = ['home', 'publications', 'awards']
+
 
 window.addEventListener('DOMContentLoaded', event => {
     // Activate Bootstrap scrollspy on the main nav element
@@ -26,6 +26,7 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+
     // Yaml
     fetch(content_dir + config_file)
         .then(response => response.text())
@@ -35,14 +36,16 @@ window.addEventListener('DOMContentLoaded', event => {
                 try {
                     document.getElementById(key).innerHTML = yml[key];
                 } catch {
-                    console.log("Unknown id and value: " + key + "," + yml[key].toString());
+                    console.log("Unknown id and value: " + key + "," + yml[key].toString())
                 }
-            });
+
+            })
         })
         .catch(error => console.log(error));
 
+
     // Marked
-    marked.use({ mangle: false, headerIds: false });
+    marked.use({ mangle: false, headerIds: false })
     section_names.forEach((name, idx) => {
         fetch(content_dir + name + '.md')
             .then(response => response.text())
@@ -54,5 +57,6 @@ window.addEventListener('DOMContentLoaded', event => {
                 MathJax.typeset();
             })
             .catch(error => console.log(error));
-    });
-});
+    })
+
+}); 
