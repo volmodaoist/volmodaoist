@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 
-    // Yaml
+    // 获取 Yaml 里面的配置，渲染解析于页面之上
     fetch(content_dir + config_file)
         .then(response => response.text())
         .then(text => {
@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', event => {
         .catch(error => console.log(error));
 
 
-    // Marked
+    // 通过 Marked 获取 markdown 并且渲染
     marked.use({ mangle: false, headerIds: false })
     section_names.forEach((name, idx) => {
         fetch(content_includes_dir + name + '.md')
