@@ -2,7 +2,7 @@
 
 [![volmodaoist](https://img.shields.io/badge/volmodaoist-github-blue?logo=github)](https://github.com/volmodaoist)
 
-#### About me
+#### About Me
 He graduated with a Bachelor's degree from Shantou University, where he was mentored by Professors Cai Hao, Chen Yindong, and Xu Jianlong, and a Master's degree from Jinan University under the supervision of Professor Wang Ke. He is currently working in the AI PasS department at ByteDance.
 
 #### Education
