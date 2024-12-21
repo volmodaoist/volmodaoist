@@ -7,6 +7,6 @@
   - National Artificial Intelligence Knowledge Contest for College Students – Volunteer and National First Prize Winner.
   - National AI Knowledge Contest, "Baidu MiaoDong AI: Smart Future" – Volunteer and National First Prize Winner.
 
-- **University Students' Rural Development**
+- **College Students' Rural Revitalization Projects**
   - Team Leader of the "Yi Qing Talents Returning to Hometown" Youth Research Project in Taishan City.
   - Outstanding Volunteer for Summer Public Classes at the "Renaissance Youth Palace" of the New Era Civilization Practice Center in Taishan City.
