@@ -1,5 +1,5 @@
 
-
+// 页面的所有内容是通过这个脚本渲染的
 const content_dir = 'contents/'
 const config_file = 'config.yml'
 const section_names = ['home', 'publications', 'awards']
