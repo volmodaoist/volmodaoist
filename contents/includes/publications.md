@@ -4,7 +4,6 @@
 
 - Ke Wang, Mingjia Zhu, **Zicong Chen (co-first author)**, Jian Weng, Ming Li, Siu-Ming Yiu, Weiping Ding, Tianlong Gu (2024). A Statistical Physics Perspective: Understanding the Causality Behind Convolutional Neural Network Adversarial Vulnerability. **IEEE Transactions on Neural Networks and Learning Systems** (Co-first author), 1-15. [[Paper]](https://doi.org/10.1109/TNNLS.2024.3359269)
 
-- Ke Wang, **Zicong Chen**, Mingjia Zhu, Zhetao Li, Jian Weng, Tianlong Gu (2024). Score-based Counterfactual Generation for Interpretable Medical Image Classification and Lesion Localization. **IEEE Transactions on Medical Imaging**. [[Paper]](https://doi.org/10.1109/TMI.2024.3375357)
   
 - Ke Wang, **Zicong Chen**, Mingjia Zhu, Zhetao Li, Jian Weng, Tianlong Gu (2024). Score-Based Counterfactual Generation for Interpretable Medical Image Classification and Lesion Localization. **IEEE Transactions on Medical Imaging**, 43(10), 3596-3607.  [[Paper]](https://doi.org/10.1109/TMI.2024.3375357)  
 
