@@ -16,6 +16,10 @@ Full-time graduate program.
 - Research and Development in the Technical Department, Guangdong Information Security Center.
 - Engineer in AI Application Quality Assurance and AI Data Services, ByteDance, Shenzhen.
 
+<!-- 实习经历可考虑展开 -->
+<!-- 在实习期间参与境内外敏感舆情分析项目，主要使用 Go 和 Python 进行开发，通过定时运行多组爬虫任务采集主流媒体及论坛数据，并开展测试、开发及基于 NLP 的舆情分析工作。本人定位并修复两类关键 Bug：UI 交互失效与 Cronjob 定时任务启动失败；同时完成两项优化：引入 JSON Schema 实现抓取数据的自动化格式校验，节省 1–3 人天校验成本；通过分块缓存策略优化日志写入逻辑，使其平均写入耗时降至原来的 25% 左右。 -->
+
+
 #### Research Interests
 Agent Application,  AI Interpretability, AI Software Engineering,
 
