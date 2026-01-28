@@ -15,3 +15,4 @@
 	- 终端分屏工具 tmux 分屏
 
 - Obsidian Xterm256 模拟终端最好使用 Oh-My-Zsh, 其兼容性会更好
+- Obsidian 模拟终端的配置详见 `obsidian-terminial-setting.json`, 通过本地脚本 wrap 包装一层

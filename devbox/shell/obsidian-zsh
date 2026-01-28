@@ -1,0 +1,14 @@
+#!/bin/sh
+# Obsidian Terminal wrapper: inject env flags then start zsh
+export OBSIDIAN_TERM=1
+export TERM_PROGRAM=Obsidian
+
+# 你可以按需要在这里再注入其它的变量
+# export ...
+
+exec /bin/zsh --login
+
+# 推荐放到 ~/.local/bin/obsidian-zsh
+# 然后再在 User 目录下面通过 
+# sudo ln -s .local/bin/obsidian-zsh /usr/local/bin/obsidian-zsh 命令
+# 创建一个符号链接 (快捷方式)，如此，命令行为上能跟 /bin/zsh 一样“全局可用”，同时更加安全
