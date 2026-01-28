@@ -2,7 +2,7 @@
 
 开发工具
 - 设备 MacOS
-- 终端 Iterm2 Shell + ZSH + Zim 增强配置 + Zim 插件
+- 终端 Iterm2 Shell + ZSH/Zim 增强配置 (Zim 和 Oh-My-Zsh 通常二选一即可)
 	- zmodule zdharma-continuum/fast-syntax-highlighting
 	- zmodule pabloariasal/zfm
 - Vim 生态工具
@@ -14,11 +14,4 @@
 	- 终端文件管理器 yazi
 	- 终端分屏工具 tmux 分屏
 
-
-```shell
-# 使得搜索的结果写到某个文件之中
-fzf --zsh > fzf.zsh
-
-# 再在 ~/.zshrc 之中添加下列代码
-source fzf.zsh
-```
+- Obsidian Xterm256 模拟终端最好使用 Oh-My-Zsh, 其兼容性会更好
