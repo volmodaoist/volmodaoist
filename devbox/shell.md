@@ -12,7 +12,9 @@
 		- `Alt+C`：模糊跳转目录
 	- 终端 lazygit 可视化工具 (设置热键option+G，因为CMD+G可以使用vim跳转具体行)
 	- 终端文件管理器 yazi
-	- 终端分屏工具 tmux 分屏
+	- 终端分屏工具 tmux 分屏 (Iterm2 亦可支持 command+(shift)+d 快捷键分屏)
 
-- Obsidian Xterm256 模拟终端最好使用 Oh-My-Zsh, 其兼容性会更好
-- Obsidian 模拟终端的配置详见 `obsidian-terminial-setting.json`, 通过本地脚本 wrap 包装一层
+- Obsidian Xterm256 模拟终端
+  - 模拟终端的配置详见 `obsidian-terminial-setting.json`, 
+  - 配置方面最好使用 Oh-My-Zsh, 而不使用Zim, 这样兼容性会更好
+  - 建议通过本地脚本把自己的 `zshrc` 配置 wrap 包装一层, 注入用户控制 zim 开关的环境变量
