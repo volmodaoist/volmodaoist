@@ -1,4 +1,5 @@
-import { Navbar } from '../components/Navbar.js';
+import { Navbar } from '@/components/Navbar.js';
+import { SearchBar } from '@/components/SearchBar.js';
 
 interface Note {
     title: string;
@@ -11,14 +12,28 @@ interface Note {
 const NOTES_DIR = '../contents/notes/';
 const NOTES_INDEX_FILE = '../contents/notes.json';
 let notesData: Note[] = [];
+let searchBar: SearchBar;
+
+// 分页配置
+const PAGE_SIZE = 12;
+let currentFilteredNotes: Note[] = [];
+let currentPage = 1;
 
 window.addEventListener('DOMContentLoaded', async () => {
     // 初始化导航栏（调整 config 路径，因为 notes.html 现在在 pages/ 下面）
     const navbar = new Navbar('../contents/config.yml');
     await navbar.init();
 
-    // 配置 Marked 库
+    // 配置 Marked 三方库
     marked.use({ mangle: false, headerIds: false });
+
+    // 初始化搜索组件 (注册过滤回调函数), 如果用户在笔记详情页搜索，自动退回列表页
+    searchBar = new SearchBar({
+        onSearch: (query: string) => {
+            filterNotes(query);
+            showNotesList();
+        }
+    });
 
     // 获取并解析笔记索引文件
     try {
@@ -27,26 +42,28 @@ window.addEventListener('DOMContentLoaded', async () => {
             throw new Error("无法加载 notes.json");
         }
         notesData = await response.json();
-        renderNotesList(notesData);
+        
+        // 数据准备好后初始化搜索组件，它会自动把 URL 参数取出来触发一次过滤
+        searchBar.init();
+
+        // 如果没有 URL 预设的搜索词，展示全量
+        if (!searchBar.getValue()) {
+            currentFilteredNotes = notesData;
+            currentPage = 1;
+            renderNotesList();
+        }
     } catch (error) {
         console.error(error);
         const listEl = document.getElementById('notes-list');
         if (listEl) {
             listEl.innerHTML = `
-                <div class="alert alert-warning">
-                    没有找到任何笔记。请先创建 <code>contents/notes.json</code> 并在 <code>contents/notes/</code> 中添加 Markdown 文件。
+                <div class="col-12 text-center py-5">
+                    <i class="bi bi-inbox text-muted" style="font-size: 4rem;"></i>
+                    <h4 class="mt-3 text-muted">当前还没有任何笔记</h4>
+                    <p class="text-muted">（你可以随时在 contents/notes 目录下开始创作）</p>
                 </div>
             `;
         }
-    }
-
-    // 搜索功能（结合标题、标签、描述逻辑进行匹配）
-    const searchInput = document.getElementById('search-input') as HTMLInputElement;
-    if (searchInput) {
-        searchInput.addEventListener('keyup', (e: Event) => {
-            const query = (e.target as HTMLInputElement).value.toLowerCase();
-            filterNotes(query);
-        });
     }
 
     // 绑定"返回"按钮
@@ -72,7 +89,9 @@ function filterNotes(query: string) {
             (note.description && note.description.toLowerCase().includes(query))
         );
     }
-    renderNotesList(filtered);
+    currentFilteredNotes = filtered;
+    currentPage = 1; // 重新搜索后重置为第一页
+    renderNotesList();
 }
 
 // 绑定在 window 上，使得 HTML 里的 onclick 事件能够直接调用
@@ -108,10 +127,8 @@ function filterNotes(query: string) {
 // 暴露标签点击搜索方法到全局
 (window as any).searchByTag = function(tag: string, event: Event) {
     event.stopPropagation(); // 阻止事件冒泡，避免点击标签时打开笔记
-    const searchInput = document.getElementById('search-input') as HTMLInputElement;
-    if (searchInput) {
-        searchInput.value = `tag:${tag}`;
-        filterNotes(`tag:${tag}`);
+    if (searchBar) {
+        searchBar.setValue(`tag:${tag}`);
     }
 };
 
@@ -120,20 +137,48 @@ function showNotesList() {
     document.getElementById('notes-list-view')!.style.display = 'block';
     document.getElementById('note-detail-view')!.style.display = 'none';
     document.getElementById('note-content-body')!.innerHTML = '';
+    // 如果想要在返回列表时也重绘一遍（防止DOM异常被清空），可以调用 renderNotesList()，通常不需要。
 }
 
+// 暴露分页切换方法到全局
+(window as any).changePage = function(page: number) {
+    currentPage = page;
+    renderNotesList();
+    // 切换分页后自动滚到顶部
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 // 将笔记渲染到页面 DOM 结构中
-function renderNotesList(notes: Note[]) {
+function renderNotesList() {
     const listContainer = document.getElementById('notes-list');
+    const paginationContainer = document.getElementById('notes-pagination');
     if (!listContainer) return;
     listContainer.innerHTML = '';
+    if (paginationContainer) paginationContainer.innerHTML = '';
+
+    const notes = currentFilteredNotes;
 
     if (notes.length === 0) {
-        listContainer.innerHTML = '<div class="col-12"><p class="text-muted">没有找到匹配的笔记。</p></div>';
+        listContainer.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-search text-muted" style="font-size: 3rem;"></i>
+                <h5 class="mt-3 text-muted">没有找到匹配的笔记</h5>
+            </div>
+        `;
         return;
     }
 
-    notes.forEach(note => {
+    // 计算分页
+    const totalPages = Math.ceil(notes.length / PAGE_SIZE);
+    // 防止当前页越界
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    const startIndex = (currentPage - 1) * PAGE_SIZE;
+    const endIndex = startIndex + PAGE_SIZE;
+    const paginatedNotes = notes.slice(startIndex, endIndex);
+
+    paginatedNotes.forEach(note => {
         const tagsHtml = (note.tags || []).map(tag => 
             `<span class="badge bg-secondary me-1 tag-clickable" onclick="searchByTag('${tag}', event)">${tag}</span>`
         ).join('');
@@ -154,4 +199,35 @@ function renderNotesList(notes: Note[]) {
         `;
         listContainer.appendChild(card);
     });
+
+    // 渲染分页 UI
+    if (paginationContainer && totalPages > 1) {
+        let paginationHtml = `<ul class="pagination justify-content-center">`;
+        
+        // Prev button
+        paginationHtml += `
+            <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                <button class="page-link" onclick="changePage(${currentPage - 1})">Previous</button>
+            </li>
+        `;
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHtml += `
+                <li class="page-item ${currentPage === i ? 'active' : ''}">
+                    <button class="page-link" onclick="changePage(${i})">${i}</button>
+                </li>
+            `;
+        }
+
+        // Next button
+        paginationHtml += `
+            <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                <button class="page-link" onclick="changePage(${currentPage + 1})">Next</button>
+            </li>
+        `;
+
+        paginationHtml += `</ul>`;
+        paginationContainer.innerHTML = paginationHtml;
+    }
 }

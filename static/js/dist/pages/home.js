@@ -1,10 +1,14 @@
-import { Navbar } from '../components/Navbar.js';
+import { Navbar } from '@/components/Navbar.js';
+import { SearchBar } from '@/components/SearchBar.js';
 const CONTENT_INCLUDES_DIR = 'contents/includes/';
 const SECTION_NAMES = ['home', 'publications', 'awards', 'projects'];
 window.addEventListener('DOMContentLoaded', async () => {
     // 初始化导航栏和 YAML 配置加载
     const navbar = new Navbar('contents/config.yml');
     await navbar.init();
+    // 初始化全局吸顶搜索栏组件
+    const searchBar = new SearchBar({ redirectUrl: 'pages/notes.html' });
+    searchBar.init();
     // 配置 Marked 库
     marked.use({ mangle: false, headerIds: false });
     // 通过 Marked 获取 markdown 并且渲染

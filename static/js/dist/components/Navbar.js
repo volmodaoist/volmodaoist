@@ -1,4 +1,4 @@
-import { loadConfig } from '../utils/config.js';
+import { loadConfig } from '@/utils/config.js';
 export class Navbar {
     constructor(configPath = 'contents/config.yml') {
         this.configPath = configPath;

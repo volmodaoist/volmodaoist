@@ -1,4 +1,4 @@
-import { loadConfig } from '../utils/config.js';
+import { loadConfig } from '@/utils/config.js';
 
 export class Navbar {
     private configPath: string;

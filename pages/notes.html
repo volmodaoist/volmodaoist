@@ -27,6 +27,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link type="text/css" href="../static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="../static/css/main.css" rel="stylesheet" />
+    <link type="text/css" href="../static/css/nav_bar.css" rel="stylesheet" />
 
     <!-- Bootstrap core JS-->
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
@@ -52,34 +53,19 @@
     <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+    <!-- Import Map for @ alias -->
+    <script type="importmap">
+    {
+        "imports": {
+            "@/": "../static/js/dist/"
+        }
+    }
+    </script>
+    
     <!-- Typescript module -->
     <script type="module" src="../static/js/dist/pages/notes.js"></script>
 
     <style>
-        .notes-container { margin-top: 100px; min-height: 70vh; }
-        
-        /* 改进的吸顶搜索栏 */
-        .sticky-search { 
-            position: sticky; 
-            top: 74px; /* 导航栏高度 */
-            z-index: 1020; 
-            background: #f8f9fa; /* 匹配周围的灰色背景 */
-            padding: 15px 0; 
-            margin-bottom: 30px; 
-            border-bottom: 1px solid rgba(0,0,0,0.05); /* 微妙的底边框替代突兀的阴影 */
-        }
-        
-        /* 为了防止上面内容卷进来时从透明处透出，可以在其上方增加一个小遮罩 */
-        .sticky-search::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: 0;
-            right: 0;
-            height: 15px;
-            background: #f8f9fa;
-        }
-
         .note-card { margin-bottom: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: none; }
         .note-card:hover { transform: translateY(-5px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; }
         .note-content { display: none; margin-top: 20px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); }
@@ -100,6 +86,7 @@
                 <i class="bi-list"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                <div id="nav-search-container" class="ms-lg-4 me-lg-auto my-3 my-lg-0" style="width: 100%; max-width: 350px;"></div>
                 <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
                     <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#page-top">HOME</a></li>
                     <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#publications">PUBLICATIONS</a></li>
@@ -112,26 +99,24 @@
     </nav>
 
     <!-- Notes Section -->
-    <section class="bg-gradient-primary-to-secondary-gray mt5 md5 notes-container" id="notes">
+    <section class="bg-gradient-primary-to-secondary-gray notes-container" id="notes">
         <div class="container px-5">
             <header class="mb-4">
                 <h2><i class="bi bi-journal-text"></i>&nbsp;My Notes</h2>
             </header>
             
             <div id="notes-list-view">
-                <div class="sticky-search">
-                    <div class="input-group">
-                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-                        <input type="text" id="search-input" class="form-control" placeholder="Search notes by title, desc or 'tag:keyword'...">
-                    </div>
-                </div>
                 <div class="row" id="notes-list">
                     <!-- Note cards will be inserted here -->
                 </div>
+                
+                <!-- Pagination UI container -->
+                <nav aria-label="Page navigation" class="mt-4" id="notes-pagination">
+                </nav>
             </div>
 
             <div id="note-detail-view" style="display: none;">
-                <div class="sticky-search border-0 bg-transparent shadow-none" style="top: 74px; padding-bottom: 0;">
+                <div class="mb-3">
                     <button class="btn btn-outline-primary btn-back" id="btn-back" onclick="window.showNotesList()">
                         <i class="bi bi-arrow-left"></i> Back to Notes
                     </button>

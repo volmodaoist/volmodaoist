@@ -110,3 +110,7 @@ section .main-body{
 }
 
 
+
+/* Push down content to avoid being overlapped by the fixed navbar */
+.top-section { margin-top: 60px; }
+.notes-container { margin-top: 74px; min-height: calc(100vh - 120px); padding-top: 50px; padding-bottom: 50px; }

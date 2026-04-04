@@ -1,0 +1,52 @@
+/* ==== Navbar Overrides ==== */
+
+/* 强制导航栏文字不换行 */
+.navbar-nav .nav-item {
+    white-space: nowrap !important;
+}
+.navbar-nav .nav-link {
+    white-space: nowrap !important;
+}
+
+/* Navbar 结构垂直居中对齐 */
+@media (min-width: 992px) {
+    .collapse.navbar-collapse {
+        display: flex !important;
+        align-items: center !important; 
+    }
+    
+    /* 让搜索框在 PC 端也能垂直居中对齐 */
+    #nav-search-container {
+        display: flex;
+        align-items: center;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* ==== SearchBar Component Styles ==== */
+
+/* 给搜索栏组件容器的输入框取消 Bootstrap 默认的 focus outline 从而应用我们自定义的发光包裹 */
+#nav-search-container .input-group:focus-within {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-radius: 0.25rem;
+}
+
+#nav-search-container .input-group:focus-within input.form-control {
+    border-color: #86b7fe !important;
+    box-shadow: none !important; /* 关键：去除 input 自己原本发的光，让包裹层发光即可 */
+}
+
+/* 解决前面的 icon 图标不跟着变色的问题 */
+#nav-search-container .input-group:focus-within .input-group-text {
+    border-color: #86b7fe !important;
+    color: #0d6efd !important; /* 图标变蓝，表示激活状态 */
+    /* 由于 bootstrap 的 border 重叠机制，加一个 z-index 使高亮的 border 不要被遮住 */
+    z-index: 5;
+}
+
+/* 平滑过渡效果 */
+#nav-search-container .input-group-text,
+#nav-search-container input.form-control {
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+}

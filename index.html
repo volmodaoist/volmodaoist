@@ -27,6 +27,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="static/css/main.css" rel="stylesheet" />
+    <link type="text/css" href="static/css/nav_bar.css" rel="stylesheet" />
 
     <!-- Bootstrap core JS-->
     <script type="text/javascript" src="static/js/bootstrap.bundle.min.js"></script>
@@ -71,8 +72,18 @@
     <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
+    <!-- Import Map for @ alias -->
+    <!-- 这段代码能让浏览器识别 @ 这个特殊路径 -->
+    <script type="importmap">
+    {
+        "imports": {
+            "@/": "./static/js/dist/"
+        }
+    }
+    </script>
+    
     <!-- Core JS-->
-    <script type="module" src="static/js/dist/pages/home.js"></script>
+    <script type="module" src="./static/js/dist/pages/home.js"></script>
     <script type="text/javascript" src="static/js/js-yaml.min.js"></script>
 
 </head>
@@ -82,13 +93,13 @@
     <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
         <div class="container px-5">
             <a id="page-top-title" class="navbar-brand fw-bold" href="#page-top"></a>
-            <!-- <a href="#page-top"><img src="static/assets/img/CUMT_LOGO.svg" style="width: 11rem;"></a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 MENU
                 <i class="bi-list"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                <div id="nav-search-container" class="ms-lg-4 me-lg-auto my-3 my-lg-0" style="width: 100%; max-width: 350px;"></div>
                 <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
                     <li class="nav-item">
                         <a class="nav-link me-lg-3" href="#page-top">HOME</a>
