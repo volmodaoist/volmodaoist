@@ -43,7 +43,7 @@ export class Navbar {
                 }
             }
             catch (err) {
-                console.log(`未知的 ID 和值: ${key}, ${config[key]}`);
+                console.log(`未知的 ID 和 val: ${key}, ${config[key]}`);
             }
         });
     }

@@ -4,7 +4,6 @@ const NOTES_DIR = '../contents/notes/';
 const NOTES_INDEX_FILE = '../contents/notes.json';
 let notesData = [];
 let searchBar;
-
 // 分页配置
 const PAGE_SIZE = 12;
 let currentFilteredNotes = [];
