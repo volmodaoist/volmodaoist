@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Taoist's Notes" />
+    <meta name="author" content="Taoist" />
+    <title id="title">Notes</title>
+
+    <!-- Icon -->
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link type="text/css" href="../static/css/styles.css" rel="stylesheet" />
+    <link type="text/css" href="../static/css/main.css" rel="stylesheet" />
+
+    <!-- Bootstrap core JS-->
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+
+    <!-- For Compatability -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <!-- Markdown -->
+    <script type="text/javascript" src="../static/js/marked.min.js"></script>
+    <script type="text/javascript" src="../static/js/js-yaml.min.js"></script>
+    
+    <!-- Mathematics -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: false,
+                processEnvironments: true,
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Typescript module -->
+    <script type="module" src="../static/js/dist/pages/notes.js"></script>
+
+    <style>
+        .notes-container { margin-top: 100px; min-height: 70vh; }
+        
+        /* 改进的吸顶搜索栏 */
+        .sticky-search { 
+            position: sticky; 
+            top: 74px; /* 导航栏高度 */
+            z-index: 1020; 
+            background: #f8f9fa; /* 匹配周围的灰色背景 */
+            padding: 15px 0; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid rgba(0,0,0,0.05); /* 微妙的底边框替代突兀的阴影 */
+        }
+        
+        /* 为了防止上面内容卷进来时从透明处透出，可以在其上方增加一个小遮罩 */
+        .sticky-search::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: #f8f9fa;
+        }
+
+        .note-card { margin-bottom: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: none; }
+        .note-card:hover { transform: translateY(-5px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; }
+        .note-content { display: none; margin-top: 20px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); }
+        .btn-back { margin-bottom: 20px; display: none; }
+        .tag-clickable { cursor: pointer; transition: background-color 0.2s; }
+        .tag-clickable:hover { background-color: #0d6efd !important; }
+    </style>
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+        <div class="container px-5">
+            <a id="page-top-title" class="navbar-brand fw-bold" href="../index.html#page-top">Taoist's Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                MENU
+                <i class="bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#page-top">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#publications">PUBLICATIONS</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#awards">AWARDS</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#projects">ENGINEERING PROJECTS</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3 active" href="notes.html">NOTES</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Notes Section -->
+    <section class="bg-gradient-primary-to-secondary-gray mt5 md5 notes-container" id="notes">
+        <div class="container px-5">
+            <header class="mb-4">
+                <h2><i class="bi bi-journal-text"></i>&nbsp;My Notes</h2>
+            </header>
+            
+            <div id="notes-list-view">
+                <div class="sticky-search">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                        <input type="text" id="search-input" class="form-control" placeholder="Search notes by title, desc or 'tag:keyword'...">
+                    </div>
+                </div>
+                <div class="row" id="notes-list">
+                    <!-- Note cards will be inserted here -->
+                </div>
+            </div>
+
+            <div id="note-detail-view" style="display: none;">
+                <div class="sticky-search border-0 bg-transparent shadow-none" style="top: 74px; padding-bottom: 0;">
+                    <button class="btn btn-outline-primary btn-back" id="btn-back" onclick="window.showNotesList()">
+                        <i class="bi bi-arrow-left"></i> Back to Notes
+                    </button>
+                </div>
+                <div class="note-content" id="note-content-body">
+                    <!-- Note markdown content will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer-->
+    <footer class="bg-bottom text-center py-5">
+        <div class="container px-5">
+            <div class="text-white-50 small">
+                <div id="copyright-text" class="mb-2">© Taoist 2024. All Rights Reserved.</div>
+                <a id="github-link" href="https://github.com/volmodaoist">Github</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

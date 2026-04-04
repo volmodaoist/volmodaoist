@@ -8,7 +8,7 @@ He graduated with a Bachelor's degree from Shantou University, where he was ment
 Full-time undergraduate program.
 - B.Sc., Computer Science and Technology, Hangzhou Dianzi University, 2020.06—2020.09  
 Undergraduate exchange program.
-- M.Sc., Computer Application Technology, Jinan University, 2022.06—2025.06 (expected)  
+- M.Sc., Computer Application Technology, Jinan University, 2022.06—2025.06
 Full-time graduate program.
 
 
