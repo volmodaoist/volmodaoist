@@ -1,0 +1,29 @@
+/* 自定义 Markdown 代码块渲染样式 */
+#note-content-body pre {
+    border: 1px solid #d1d5db;        /* 增加明显的边框 */
+    border-radius: 6px;                 /* 圆角 */
+    background-color: #f8f9fa;        /* 轻微灰色背景，与边框呼应 */
+    margin-bottom: 1.5rem;              /* 下边距 */
+    padding: 1rem;                      /* 内边距 */
+    overflow-x: auto;                   /* 代码过长时允许滚动 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* 内部微阴影增加层次感 */
+}
+
+/* Highlight.js 会将类名添加到 code 标签上，确保内部排版 */
+#note-content-body pre code {
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: transparent;      /* 覆盖部分 highlight.js 样式，使得外层背景生效 */
+    border: none;                       /* 确保内部没有杂余边框 */
+}
+
+/* 单行内联代码样式（如 `code`） */
+#note-content-body code:not(pre code) {
+    padding: 0.2em 0.4em;
+    font-size: 85%;
+    background-color: rgba(27, 31, 36, 0.05);
+    border-radius: 4px;
+    color: #e83e8c;                     /* 可选：单行代码颜色 */
+}

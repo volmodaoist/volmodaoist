@@ -28,6 +28,7 @@
     <link type="text/css" href="../static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="../static/css/main.css" rel="stylesheet" />
     <link type="text/css" href="../static/css/nav_bar.css" rel="stylesheet" />
+    <link type="text/css" href="../static/css/markdown.css" rel="stylesheet" />
 
     <!-- Bootstrap core JS-->
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
@@ -38,6 +39,10 @@
     <!-- Markdown -->
     <script type="text/javascript" src="../static/js/marked.min.js"></script>
     <script type="text/javascript" src="../static/js/js-yaml.min.js"></script>
+
+    <!-- Highlight.js for Code Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     
     <!-- Mathematics -->
     <script>
@@ -121,8 +126,24 @@
                         <i class="bi bi-arrow-left"></i> Back to Notes
                     </button>
                 </div>
-                <div class="note-content" id="note-content-body">
-                    <!-- Note markdown content will be rendered here -->
+                <div class="row">
+                    <!-- 桌面端侧边栏目录 (移动到了左侧) -->
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <div class="sticky-top" style="top: 100px; z-index: 10;">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title fw-bold mb-3 border-bottom pb-2"><i class="bi bi-list-ul"></i> 目录导航</h6>
+                                    <div id="note-toc-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 笔记正文内容 (移动到了右侧) -->
+                    <div class="col-lg-9">
+                        <div class="note-content mt-0" id="note-content-body">
+                            <!-- Note markdown content will be rendered here -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

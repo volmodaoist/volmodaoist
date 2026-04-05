@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/Navbar.js';
 import { SearchBar } from '@/components/SearchBar.js';
+import { Toc } from '@/components/Toc.js';
 const NOTES_DIR = '../contents/notes/';
 const NOTES_INDEX_FILE = '../contents/notes.json';
 let notesData = [];
@@ -13,7 +14,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     const navbar = new Navbar('../contents/config.yml');
     await navbar.init();
     // 配置 Marked 三方库
-    marked.use({ mangle: false, headerIds: false });
+    marked.use({
+        mangle: false,
+        headerIds: false,
+    });
     // 初始化搜索组件 (注册过滤回调函数), 如果用户在笔记详情页搜索，自动退回列表页
     searchBar = new SearchBar({
         onSearch: (query) => {
@@ -91,6 +95,16 @@ window.openNote = async function (filename) {
         const markdown = await response.text();
         const html = marked.parse(markdown);
         contentBody.innerHTML = html;
+        // 渲染代码高亮 (highlight.js 的全局变量名是 hljs)
+        const hljs = window.hljs;
+        if (typeof hljs !== 'undefined') {
+            document.querySelectorAll('#note-content-body pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        }
+        // 渲染目录
+        const toc = new Toc('note-toc-container', 'note-content-body');
+        toc.render();
         // 渲染数学公式
         if (typeof MathJax !== 'undefined' && MathJax.typeset) {
             MathJax.typeset();
@@ -151,6 +165,7 @@ function renderNotesList() {
     const startIndex = (currentPage - 1) * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
     const paginatedNotes = notes.slice(startIndex, endIndex);
+    const fragment = document.createDocumentFragment();
     paginatedNotes.forEach(note => {
         const tagsHtml = (note.tags || []).map(tag => `<span class="badge bg-secondary me-1 tag-clickable" onclick="searchByTag('${tag}', event)">${tag}</span>`).join('');
         const card = document.createElement('div');
@@ -167,8 +182,9 @@ function renderNotesList() {
                 </div>
             </div>
         `;
-        listContainer.appendChild(card);
+        fragment.appendChild(card);
     });
+    listContainer.appendChild(fragment);
     // 渲染分页 UI
     if (paginationContainer && totalPages > 1) {
         let paginationHtml = `<ul class="pagination justify-content-center">`;

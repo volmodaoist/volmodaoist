@@ -1,5 +1,12 @@
 [
   {
+    "title": "个人博客问题分析与优化",
+    "date": "2024-04-05",
+    "description": "分析并记录个人博客构建过程之中遇到的各种问题。",
+    "tags": ["性能", "前端"],
+    "file": "博客问题分析.md"
+  },
+  {
     "title": "Welcome to my Notes",
     "date": "2024-04-04",
     "description": "This is the first note on my new blog system.",

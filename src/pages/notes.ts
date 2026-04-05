@@ -1,5 +1,8 @@
 import { Navbar } from '@/components/Navbar.js';
 import { SearchBar } from '@/components/SearchBar.js';
+import { Toc } from '@/components/Toc.js';
+
+declare const marked: any;
 
 interface Note {
     title: string;
@@ -25,7 +28,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     await navbar.init();
 
     // 配置 Marked 三方库
-    marked.use({ mangle: false, headerIds: false });
+    marked.use({ 
+        mangle: false, 
+        headerIds: false,
+    });
 
     // 初始化搜索组件 (注册过滤回调函数), 如果用户在笔记详情页搜索，自动退回列表页
     searchBar = new SearchBar({
@@ -114,6 +120,18 @@ function filterNotes(query: string) {
         const html = marked.parse(markdown);
         contentBody.innerHTML = html;
         
+        // 渲染代码高亮 (highlight.js 的全局变量名是 hljs)
+        const hljs = (window as any).hljs;
+        if (typeof hljs !== 'undefined') {
+            document.querySelectorAll('#note-content-body pre code').forEach((block) => {
+                hljs.highlightElement(block as HTMLElement);
+            });
+        }
+        
+        // 渲染目录
+        const toc = new Toc('note-toc-container', 'note-content-body');
+        toc.render();
+        
         // 渲染数学公式
         if (typeof MathJax !== 'undefined' && MathJax.typeset) {
             MathJax.typeset();
@@ -178,6 +196,8 @@ function renderNotesList() {
     const endIndex = startIndex + PAGE_SIZE;
     const paginatedNotes = notes.slice(startIndex, endIndex);
 
+    const fragment = document.createDocumentFragment();
+
     paginatedNotes.forEach(note => {
         const tagsHtml = (note.tags || []).map(tag => 
             `<span class="badge bg-secondary me-1 tag-clickable" onclick="searchByTag('${tag}', event)">${tag}</span>`
@@ -197,8 +217,10 @@ function renderNotesList() {
                 </div>
             </div>
         `;
-        listContainer.appendChild(card);
+        fragment.appendChild(card);
     });
+    
+    listContainer.appendChild(fragment);
 
     // 渲染分页 UI
     if (paginationContainer && totalPages > 1) {
