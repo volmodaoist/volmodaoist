@@ -189,21 +189,8 @@
     <!-- Projects  -->
 
 
-    <!-- Footer 此处记录了项目模板来自哪里 -->
-    <footer class="bg-bottom text-center py-5">
-        <div class="container px-5">
-            <div class="text-white-50 small">
-                <div id="copyright-text" class="mb-2"></div>
-                <a id="github-link" href="https://github.com/senli1073">Github</a>
-                <span class="mx-1">&middot;</span>
-                <a id="license-link" href="https://github.com/senli1073/senli1073.github.io/blob/main/LICENSE">License</a>
-                <span class="mx-1">&middot;</span>
-                <a href="javascript:void(0);" onclick="window.forceRefreshContent()" title="强制刷新网页内容" class="text-white-50 text-decoration-none">
-                    <i class="bi bi-arrow-clockwise"></i> Refresh Cache
-                </a>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component Container 此处通过一个唯一ID来让JS定义, 然后动态修改 innerHTML 内容 -->
+    <div id="footer-container"></div>
 
 </body>
 

@@ -1,6 +1,7 @@
 import { Navbar } from '@/components/Navbar.js';
 import { SearchBar } from '@/components/SearchBar.js';
 import { Toc } from '@/components/Toc.js';
+import { Footer } from '@/components/Footer.js';
 
 declare const marked: any;
 
@@ -77,6 +78,21 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (btnBack) {
         btnBack.addEventListener('click', showNotesList);
     }
+
+    // 渲染 Footer 组件
+    const footer = new Footer('footer-container');
+    footer.render();
+
+    // 为了在笔记列表页也能强刷，暴露强刷方法
+    (window as any).forceRefreshContent = () => {
+        // 如果当前在详情页查看某篇笔记，则重新拉取这篇笔记
+        if (currentOpenedNote && document.getElementById('note-detail-view')!.style.display === 'block') {
+            (window as any).openNote(currentOpenedNote, true);
+        } else {
+            // 如果在列表页，也可以选择直接刷新页面或者重新拉取 notes.json
+            window.location.reload();
+        }
+    };
 });
 
 // 根据关键词过滤笔记列表
@@ -100,8 +116,12 @@ function filterNotes(query: string) {
     renderNotesList();
 }
 
+let currentOpenedNote: string | null = null;
+
 // 绑定在 window 上，使得 HTML 里的 onclick 事件能够直接调用
-(window as any).openNote = async function(filename: string) {
+(window as any).openNote = async function(filename: string, forceRefresh: boolean = false) {
+    currentOpenedNote = filename;
+    
     document.getElementById('notes-list-view')!.style.display = 'none';
     const detailView = document.getElementById('note-detail-view')!;
     const contentBody = document.getElementById('note-content-body')!;
@@ -110,11 +130,32 @@ function filterNotes(query: string) {
     detailView.style.display = 'block';
     contentBody.style.display = 'block';
     btnBack.style.display = 'inline-block';
-    contentBody.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div></div>';
+    
+    // 如果不是强制刷新，才显示 loading（避免强刷时页面闪烁太严重）
+    if (!forceRefresh) {
+        contentBody.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div></div>';
+    }
+
+    // 记录或读取版本号
+    if (forceRefresh) {
+        localStorage.setItem('notes_content_version', new Date().getTime().toString());
+    }
+    const version = localStorage.getItem('notes_content_version');
+
+    // 构建 URL 和请求参数
+    let requestUrl = NOTES_DIR + filename;
+    if (version) {
+        requestUrl = `${requestUrl}?v=${version}`;
+    }
+
+    let fetchOptions: RequestInit = {};
+    if (forceRefresh) {
+        fetchOptions.cache = 'reload';
+    }
 
     // 异步拉取并渲染具体的 markdown 文件
     try {
-        const response = await fetch(NOTES_DIR + filename);
+        const response = await fetch(requestUrl, fetchOptions);
         if (!response.ok) throw new Error("文件未找到");
         const markdown = await response.text();
         const html = marked.parse(markdown);
