@@ -35,13 +35,11 @@ export class Toc {
             li.className = 'nav-item mb-1';
             
             // 根据标题级别做对应的左侧缩进 (这里将 h1 视作顶层，h2 缩进 1rem 等)
-            const indent = Math.max(0, level - 1) * 1;
-            li.style.marginLeft = `${indent}rem`;
+            const indent = Math.min(Math.max(0, level - 1), 3);
+            li.style.paddingInlineStart = `${indent}rem`;
             
             const a = document.createElement('a');
-            a.className = 'nav-link text-secondary py-0 px-0 small text-truncate';
-            a.style.display = 'block';
-            a.style.maxWidth = '100%';
+            a.className = 'nav-link text-secondary py-0 px-0 small';
             a.href = `#${heading.id}`;
             a.textContent = heading.textContent;
             a.title = heading.textContent || '';

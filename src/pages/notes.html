@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Taoist's Notes" />
+    <meta name="description" content="道长的日记：日常思考、科研记录与成长经历" />
     <meta name="author" content="Taoist" />
-    <title id="title">Notes</title>
+    <title id="title">日记</title>
 
     <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../../static/assets/favicon.ico" />
 
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -25,20 +25,20 @@
         rel="stylesheet" />
 
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link type="text/css" href="../static/css/styles.css" rel="stylesheet" />
-    <link type="text/css" href="../static/css/main.css" rel="stylesheet" />
-    <link type="text/css" href="../static/css/nav_bar.css" rel="stylesheet" />
-    <link type="text/css" href="../static/css/markdown.css" rel="stylesheet" />
+    <link type="text/css" href="../../static/css/styles.css" rel="stylesheet" />
+    <link type="text/css" href="../../static/css/main.css?v=20261123" rel="stylesheet" />
+    <link type="text/css" href="../../static/css/nav_bar.css" rel="stylesheet" />
+    <link type="text/css" href="../../static/css/markdown.css?v=20261123" rel="stylesheet" />
 
     <!-- Bootstrap core JS-->
-    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../../static/js/bootstrap.bundle.min.js"></script>
 
     <!-- For Compatability -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     
     <!-- Markdown -->
-    <script type="text/javascript" src="../static/js/marked.min.js"></script>
-    <script type="text/javascript" src="../static/js/js-yaml.min.js"></script>
+    <script type="text/javascript" src="../../static/js/marked.min.js"></script>
+    <script type="text/javascript" src="../../static/js/js-yaml.min.js"></script>
 
     <!-- Highlight.js for Code Highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
@@ -62,21 +62,78 @@
     <script type="importmap">
     {
         "imports": {
-            "@/": "../static/js/dist/"
+            "@/": "../../static/js/dist/"
         }
     }
     </script>
     
     <!-- Typescript module -->
-    <script type="module" src="../static/js/dist/pages/notes.js"></script>
+    <script type="module" src="../../static/js/dist/pages/notes.js?v=20261123"></script>
 
     <style>
         .note-card { margin-bottom: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: none; }
         .note-card:hover { transform: translateY(-5px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; }
-        .note-content { display: none; margin-top: 20px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); }
+        .note-content { display: none; margin-top: 20px; background: white; padding: 24px; border-radius: 8px; box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); }
         .btn-back { margin-bottom: 20px; display: none; }
         .tag-clickable { cursor: pointer; transition: background-color 0.2s; }
         .tag-clickable:hover { background-color: #0d6efd !important; }
+
+        /* 日记详情布局内联在页面里，避免外部 CSS 缓存导致目录和正文变成上下堆叠 */
+        #note-toc-container {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            max-height: calc(100vh - 180px);
+            overflow-y: auto;
+        }
+
+        .notes-shell {
+            padding-inline: 3rem;
+        }
+
+        #notes.notes-detail-active > .notes-shell {
+            max-width: 1480px;
+            padding-inline: clamp(16px, 2.5vw, 32px);
+        }
+
+        .note-body-column {
+            min-width: 0;
+        }
+
+        @media (min-width: 992px) {
+            .note-detail-layout {
+                flex-wrap: nowrap;
+            }
+
+            .note-detail-layout > .note-toc-column {
+                flex: 0 0 auto;
+                width: max-content;
+                max-width: min(24rem, 40%);
+            }
+
+            .note-detail-layout > .note-body-column {
+                flex: 1 1 0;
+                width: 0;
+            }
+        }
+
+        .toc-nav,
+        .toc-nav .nav-item {
+            width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+        }
+
+        .toc-nav .nav-link {
+            display: block;
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+        }
     </style>
 </head>
 
@@ -84,7 +141,7 @@
     <!-- Navigation-->
     <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
         <div class="container px-5">
-            <a id="page-top-title" class="navbar-brand fw-bold" href="../index.html#page-top">Taoist's Space</a>
+            <a id="page-top-title" class="navbar-brand fw-bold" href="../../index.html#page-top">Taoist's Space</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 MENU
@@ -93,42 +150,39 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <div id="nav-search-container" class="ms-lg-4 me-lg-auto my-3 my-lg-0" style="width: 100%; max-width: 350px;"></div>
                 <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#page-top">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#publications">PUBLICATIONS</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#awards">AWARDS</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="../index.html#projects">ENGINEERING PROJECTS</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3 active" href="notes.html">NOTES</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="../../index.html#page-top">主页</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3 active" href="notes.html">日记</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Notes Section -->
+    <!-- Diary Section -->
     <section class="bg-gradient-primary-to-secondary-gray notes-container" id="notes">
-        <div class="container px-5">
+        <div class="container notes-shell">
             <header class="mb-4">
-                <h2><i class="bi bi-journal-text"></i>&nbsp;My Notes</h2>
+                <h2><i class="bi bi-journal-text"></i>&nbsp;日记/杂记/随笔</h2>
             </header>
             
             <div id="notes-list-view">
                 <div class="row" id="notes-list">
-                    <!-- Note cards will be inserted here -->
+                    <!-- Diary entries will be inserted here -->
                 </div>
                 
                 <!-- Pagination UI container -->
-                <nav aria-label="Page navigation" class="mt-4" id="notes-pagination">
+                <nav aria-label="日记分页" class="mt-4" id="notes-pagination">
                 </nav>
             </div>
 
             <div id="note-detail-view" style="display: none;">
                 <div class="mb-3">
-                    <button class="btn btn-outline-primary btn-back" id="btn-back" onclick="window.showNotesList()">
-                        <i class="bi bi-arrow-left"></i> Back to Notes
+                    <button class="btn btn-outline-primary btn-back" id="btn-back">
+                        <i class="bi bi-arrow-left"></i> 返回日记
                     </button>
                 </div>
-                <div class="row">
+                <div class="row note-detail-layout">
                     <!-- 桌面端侧边栏目录 (移动到了左侧) -->
-                    <div class="col-lg-3 d-none d-lg-block">
+                    <div class="note-toc-column d-none d-lg-block">
                         <div class="sticky-top" style="top: 100px; z-index: 10;">
                             <div class="card border-0 shadow-sm">
                                 <div class="card-body">
@@ -138,10 +192,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 笔记正文内容 (移动到了右侧) -->
-                    <div class="col-lg-9">
+                    <!-- 日记正文内容 -->
+                    <div class="note-body-column">
                         <div class="note-content mt-0" id="note-content-body">
-                            <!-- Note markdown content will be rendered here -->
+                            <!-- Diary markdown content will be rendered here -->
                         </div>
                     </div>
                 </div>

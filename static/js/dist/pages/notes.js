@@ -2,8 +2,8 @@ import { Navbar } from '@/components/Navbar.js';
 import { SearchBar } from '@/components/SearchBar.js';
 import { Toc } from '@/components/Toc.js';
 import { Footer } from '@/components/Footer.js';
-const NOTES_DIR = '../contents/notes/';
-const NOTES_INDEX_FILE = '../contents/notes.json';
+const NOTES_DIR = '../../contents/notes/';
+const NOTES_INDEX_FILE = '../../contents/notes.json';
 let notesData = [];
 let searchBar;
 // 分页配置
@@ -11,24 +11,25 @@ const PAGE_SIZE = 12;
 let currentFilteredNotes = [];
 let currentPage = 1;
 window.addEventListener('DOMContentLoaded', async () => {
-    // 初始化导航栏（调整 config 路径，因为 notes.html 现在在 pages/ 下面）
-    const navbar = new Navbar('../contents/config.yml');
+    // 页面直接位于 src/pages/，配置从站点根目录读取。
+    const navbar = new Navbar('../../contents/config.yml');
     await navbar.init();
+    document.title = `日记 | ${document.title}`;
     // 配置 Marked 三方库
     marked.use({
         mangle: false,
         headerIds: false,
     });
-    // 初始化搜索组件 (注册过滤回调函数), 如果用户在笔记详情页搜索，自动退回列表页
+    // 初始化搜索组件 (注册过滤回调函数), 如果用户在日记详情页搜索，自动退回列表页
     searchBar = new SearchBar({
         onSearch: (query) => {
             filterNotes(query);
             showNotesList();
         }
     });
-    // 获取并解析笔记索引文件
+    // 获取并解析日记索引文件
     try {
-        const response = await fetch(NOTES_INDEX_FILE);
+        const response = await fetch(NOTES_INDEX_FILE, { cache: 'no-cache' });
         if (!response.ok) {
             throw new Error("无法加载 notes.json");
         }
@@ -49,8 +50,8 @@ window.addEventListener('DOMContentLoaded', async () => {
             listEl.innerHTML = `
                 <div class="col-12 text-center py-5">
                     <i class="bi bi-inbox text-muted" style="font-size: 4rem;"></i>
-                    <h4 class="mt-3 text-muted">当前还没有任何笔记</h4>
-                    <p class="text-muted">（你可以随时在 contents/notes 目录下开始创作）</p>
+                    <h4 class="mt-3 text-muted">当前还没有任何日记</h4>
+                    <p class="text-muted">从这里开始记录日常与科研经历。</p>
                 </div>
             `;
         }
@@ -63,9 +64,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     // 渲染 Footer 组件
     const footer = new Footer('footer-container');
     footer.render();
-    // 为了在笔记列表页也能强刷，暴露强刷方法
+    // 为了在日记列表页也能强刷，暴露强刷方法
     window.forceRefreshContent = () => {
-        // 如果当前在详情页查看某篇笔记，则重新拉取这篇笔记
+        // 如果当前在详情页查看某篇日记，则重新拉取这篇日记
         if (currentOpenedNote && document.getElementById('note-detail-view').style.display === 'block') {
             window.openNote(currentOpenedNote, true);
         }
@@ -75,7 +76,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
     };
 });
-// 根据关键词过滤笔记列表
+// 根据关键词过滤日记列表
 function filterNotes(query) {
     let filtered = [];
     // 增加显式的按标签搜索能力，例如输入 'tag:blog'
@@ -96,6 +97,7 @@ let currentOpenedNote = null;
 // 绑定在 window 上，使得 HTML 里的 onclick 事件能够直接调用
 window.openNote = async function (filename, forceRefresh = false) {
     currentOpenedNote = filename;
+    document.getElementById('notes')?.classList.add('notes-detail-active');
     document.getElementById('notes-list-view').style.display = 'none';
     const detailView = document.getElementById('note-detail-view');
     const contentBody = document.getElementById('note-content-body');
@@ -113,7 +115,7 @@ window.openNote = async function (filename, forceRefresh = false) {
     }
     const version = localStorage.getItem('notes_content_version');
     // 构建 URL 和请求参数
-    let requestUrl = NOTES_DIR + filename;
+    let requestUrl = NOTES_DIR + filename.split('/').map(encodeURIComponent).join('/');
     if (version) {
         requestUrl = `${requestUrl}?v=${version}`;
     }
@@ -127,7 +129,8 @@ window.openNote = async function (filename, forceRefresh = false) {
         if (!response.ok)
             throw new Error("文件未找到");
         const markdown = await response.text();
-        const html = marked.parse(markdown);
+        const body = markdown.replace(/^(?:\uFEFF)?---\r?\n(?:[\s\S]*?\r?\n)?(?:---|\.\.\.)[ \t]*(?:\r?\n|$)/, '');
+        const html = marked.parse(body);
         contentBody.innerHTML = html;
         // 渲染代码高亮 (highlight.js 的全局变量名是 hljs)
         const hljs = window.hljs;
@@ -146,18 +149,19 @@ window.openNote = async function (filename, forceRefresh = false) {
     }
     catch (error) {
         console.error(error);
-        contentBody.innerHTML = `<div class="alert alert-danger">加载笔记报错: ${filename}</div>`;
+        contentBody.innerHTML = `<div class="alert alert-danger">加载日记报错: ${filename}</div>`;
     }
 };
 // 暴露标签点击搜索方法到全局
 window.searchByTag = function (tag, event) {
-    event.stopPropagation(); // 阻止事件冒泡，避免点击标签时打开笔记
+    event.stopPropagation(); // 阻止事件冒泡，避免点击标签时打开日记
     if (searchBar) {
         searchBar.setValue(`tag:${tag}`);
     }
 };
-// 显示笔记列表视图（隐藏详情）
+// 显示日记列表视图（隐藏详情）
 function showNotesList() {
+    document.getElementById('notes')?.classList.remove('notes-detail-active');
     document.getElementById('notes-list-view').style.display = 'block';
     document.getElementById('note-detail-view').style.display = 'none';
     document.getElementById('note-content-body').innerHTML = '';
@@ -170,7 +174,7 @@ window.changePage = function (page) {
     // 切换分页后自动滚到顶部
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
-// 将笔记渲染到页面 DOM 结构中
+// 将日记渲染到页面 DOM 结构中
 function renderNotesList() {
     const listContainer = document.getElementById('notes-list');
     const paginationContainer = document.getElementById('notes-pagination');
@@ -184,7 +188,7 @@ function renderNotesList() {
         listContainer.innerHTML = `
             <div class="col-12 text-center py-5">
                 <i class="bi bi-search text-muted" style="font-size: 3rem;"></i>
-                <h5 class="mt-3 text-muted">没有找到匹配的笔记</h5>
+                <h5 class="mt-3 text-muted">没有找到匹配的日记</h5>
             </div>
         `;
         return;
@@ -201,21 +205,33 @@ function renderNotesList() {
     const paginatedNotes = notes.slice(startIndex, endIndex);
     const fragment = document.createDocumentFragment();
     paginatedNotes.forEach(note => {
-        const tagsHtml = (note.tags || []).map(tag => `<span class="badge bg-secondary me-1 tag-clickable" onclick="searchByTag('${tag}', event)">${tag}</span>`).join('');
         const card = document.createElement('div');
         card.className = 'col-md-6 col-lg-4 mb-4';
         card.innerHTML = `
-            <div class="card note-card shadow-sm h-100" onclick="openNote('${note.file}')">
+            <div class="card note-card shadow-sm h-100">
                 <div class="card-body">
-                    <h5 class="card-title text-primary">${note.title}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted small">${note.date || ''}</h6>
-                    <p class="card-text small">${note.description || '暂无简介'}</p>
-                    <div class="tags-container mt-2">
-                        ${tagsHtml}
-                    </div>
+                    <h5 class="card-title text-primary"></h5>
+                    <h6 class="card-subtitle mb-2 text-muted small"></h6>
+                    <p class="card-text small"></p>
+                    <div class="tags-container mt-2"></div>
                 </div>
             </div>
         `;
+        card.querySelector('.card-title').textContent = note.title;
+        card.querySelector('.card-subtitle').textContent = note.date || '';
+        card.querySelector('.card-text').textContent = note.description || '暂无简介';
+        card.querySelector('.note-card').addEventListener('click', () => window.openNote(note.file));
+        const tagsContainer = card.querySelector('.tags-container');
+        (note.tags || []).forEach(tag => {
+            const badge = document.createElement('span');
+            badge.className = 'badge bg-secondary me-1 tag-clickable';
+            badge.textContent = tag;
+            badge.addEventListener('click', event => {
+                event.stopPropagation();
+                searchBar.setValue(`tag:${tag}`);
+            });
+            tagsContainer.appendChild(badge);
+        });
         fragment.appendChild(card);
     });
     listContainer.appendChild(fragment);
@@ -225,7 +241,7 @@ function renderNotesList() {
         // Prev button
         paginationHtml += `
             <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-                <button class="page-link" onclick="changePage(${currentPage - 1})">Previous</button>
+                <button class="page-link" onclick="changePage(${currentPage - 1})">上一页</button>
             </li>
         `;
         // Page numbers
@@ -239,7 +255,7 @@ function renderNotesList() {
         // Next button
         paginationHtml += `
             <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-                <button class="page-link" onclick="changePage(${currentPage + 1})">Next</button>
+                <button class="page-link" onclick="changePage(${currentPage + 1})">下一页</button>
             </li>
         `;
         paginationHtml += `</ul>`;

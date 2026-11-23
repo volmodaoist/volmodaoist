@@ -3,7 +3,7 @@ import { SearchBar } from '@/components/SearchBar.js';
 import { Footer } from '@/components/Footer.js';
 
 const CONTENT_INCLUDES_DIR = 'contents/includes/';
-const SECTION_NAMES = ['home', 'publications', 'awards', 'projects'];
+const SECTION_NAMES = ['home'];
 
 window.addEventListener('DOMContentLoaded', async () => {
     // 初始化导航栏和 YAML 配置加载
@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     await navbar.init();
 
     // 初始化全局吸顶搜索栏组件
-    const searchBar = new SearchBar({ redirectUrl: 'pages/notes.html' });
+    const searchBar = new SearchBar({ redirectUrl: 'src/pages/notes.html' });
     searchBar.init();
 
     // 配置 Marked 库
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         // 获取本地存储中的版本号，以决定我们拉取哪个版本的文件
         const version = localStorage.getItem('content_version');
 
-        SECTION_NAMES.forEach(async (name) => {
+        await Promise.all(SECTION_NAMES.map(async (name) => {
             try {
                 // 构建请求的 URL，如果存在版本号则附加在最后
                 let requestUrl = `${CONTENT_INCLUDES_DIR}${name}.md`;
@@ -36,13 +36,10 @@ window.addEventListener('DOMContentLoaded', async () => {
                     requestUrl = `${requestUrl}?v=${version}`;
                 }
 
-                // 构建 fetch 请求的选项
-                let fetchOptions: RequestInit = {};
-                if (forceRefresh) {
-                    // 当用户明确要求强制刷新时，我们需要给浏览器下达不使用缓存的指令
-                    // reload 会强制浏览器重新发起网络请求，即使缓存中已存在
-                    fetchOptions.cache = 'reload';
-                }
+                // 每次打开校验内容是否更新；未变化时仍可复用缓存。
+                const fetchOptions: RequestInit = {
+                    cache: forceRefresh ? 'reload' : 'no-cache',
+                };
 
                 // 发起请求并渲染
                 const response = await fetch(requestUrl, fetchOptions);
@@ -60,7 +57,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             } catch (error) {
                 console.error(error);
             }
-        });
+        }));
     };
 
     // 默认加载

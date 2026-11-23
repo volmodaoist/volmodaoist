@@ -1,7 +1,7 @@
 export interface SearchBarOptions {
-    /** 配置主页回车后跳转的地址，如 'pages/notes.html' */
+    /** 配置主页回车后跳转的地址，如 'src/pages/notes.html' */
     redirectUrl?: string;
-    /** 配置笔记页实时搜索的过滤回调函数 */
+    /** 配置日记页实时搜索的过滤回调函数 */
     onSearch?: (query: string) => void;
 }
 
@@ -27,8 +27,8 @@ export class SearchBar {
         
         // 动态设置占位符文案
         const placeholder = this.redirectUrl 
-            ? "Search (Press Enter)..." 
-            : "Search by title, tag...";
+            ? "搜索日记，按回车…"
+            : "按标题或标签搜索日记…";
 
         container.innerHTML = `
             <div class="input-group input-group-sm">
@@ -57,7 +57,7 @@ export class SearchBar {
         this.inputElement.addEventListener('keyup', (e: KeyboardEvent) => {
             const query = this.inputElement!.value.trim().toLowerCase();
 
-            // 如果当前在笔记页，支持实时搜索过滤
+            // 如果当前在日记页，支持实时搜索过滤
             if (this.onSearch) {
                 this.onSearch(query);
             }

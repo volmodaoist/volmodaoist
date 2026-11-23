@@ -2,7 +2,7 @@
 
 build: note-index
 	@echo "Compiling TypeScript..."
-	@npm run build || npx tsc
+	@npm run build
 
 note-index:
 	@node scripts/generate-note-index.cjs
