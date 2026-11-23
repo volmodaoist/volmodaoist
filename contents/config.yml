@@ -3,3 +3,6 @@ page-top-title: Volmodaoist·Emanon
 top-section-bg-text: Computer Science
 home-subtitle: Volmodaoist·Emanon&ensp;|&ensp;道长
 copyright-text: '&copy; Taoist 2022-2025. All Rights Reserved.'
+
+# .nojekyll 这个空文件的是为了是关闭 GitHub Pages Jekyll 处理，让所有文件按原样发布
+# 如果没有这个空文件, Jekyll 会把带有元信息的 md 编译变为 .html，原来的 .md 地址就不再可访问
