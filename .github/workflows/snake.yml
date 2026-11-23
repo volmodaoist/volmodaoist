@@ -42,6 +42,13 @@ jobs:
           dist/github-snake-dark.svg?palette=github-dark
           dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
 
+    - name: Fix dist permissions
+      # Platane/snk 在 Docker 容器内以 root 运行，生成的 dist 目录属主是 root，
+      # 后续 python 步骤以 runner 用户运行会写不进去，这里把属主改回来。
+      run: |
+        mkdir -p dist
+        sudo chown -R "$(id -u):$(id -g)" dist
+
     - name: Generate static contribution graphs
       run: python3 scripts/generate-static-contributions.py dist
 
