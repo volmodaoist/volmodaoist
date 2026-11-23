@@ -52,6 +52,20 @@ jobs:
     - name: Generate static contribution graphs
       run: python3 scripts/generate-static-contributions.py dist
 
+    - name: Fetch badge SVGs
+      # 把动态徽章在构建时固化成静态 SVG，README 直接引用 output 分支，
+      # 避免访客每次打开主页都依赖 shields.io / Camo 实时拉取。
+      run: |
+        curl -fsSL --retry 3 --retry-delay 2 \
+          'https://img.shields.io/github/stars/volmodaoist?style=flat-square&logo=github&label=Stars' \
+          -o dist/github-stars.svg
+        curl -fsSL --retry 3 --retry-delay 2 \
+          'https://img.shields.io/github/followers/volmodaoist?style=flat-square&logo=github' \
+          -o dist/github-followers.svg
+        curl -fsSL --retry 3 --retry-delay 2 \
+          'https://img.shields.io/github/last-commit/volmodaoist/volmodaoist/master?style=flat-square&logo=github&label=Updated' \
+          -o dist/github-updated.svg
+
     - name: Publish contribution assets
       uses: crazy-max/ghaction-github-pages@v4
       with:

@@ -10,6 +10,7 @@
 - 日记目录与详情容器扩宽，直至上限
 - 静态资源增加版本参数，避免浏览器缓存导致的样式异常
 - 新增 `.nojekyll`，避免 GitHub Pages 的 Jekyll 把日记 Markdown 转成 HTML，导致日记详情加载失败
+- Stars/followers/Updated 徽章改为构建时生成静态 SVG 并发布到 `output` 分支，README 引用 raw 地址，减少对 shields.io 实时依赖
 
 ## v0.0.2
 
