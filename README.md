@@ -1,10 +1,8 @@
 ## 👋 Hi~ 欢迎访问道长的空间, 互相认识一下交个朋友吧！
 
-**技术工具** ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white) ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white) ![Swift](https://img.shields.io/badge/Swift-F05138?style=flat-square&logo=swift&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![GitHub total stars](https://img.shields.io/github/stars/volmodaoist?style=flat-square&logo=github&label=Stars) ![GitHub followers](https://img.shields.io/github/followers/volmodaoist?style=flat-square&logo=github) ![Last commit](https://img.shields.io/github/last-commit/volmodaoist/volmodaoist/master?style=flat-square&logo=github&label=Updated)
 
-**贡献信息** [![GitHub total stars](https://img.shields.io/github/stars/volmodaoist?style=flat-square&logo=github&label=Stars)](https://github.com/volmodaoist?tab=repositories) [![GitHub followers](https://img.shields.io/github/followers/volmodaoist?style=flat-square&logo=github)](https://github.com/volmodaoist?tab=followers) [![Last commit](https://img.shields.io/github/last-commit/volmodaoist/volmodaoist/master?style=flat-square&logo=github&label=Updated)](https://github.com/volmodaoist/volmodaoist/commits/master/)
-
-
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white) ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white) ![Swift](https://img.shields.io/badge/Swift-F05138?style=flat-square&logo=swift&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) ![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white) ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=cplusplus&logoColor=white) ![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=flat-square&logo=latex&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 
 ## 🌱 GitHub 贡献
 
