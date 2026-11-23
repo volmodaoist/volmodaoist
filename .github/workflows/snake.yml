@@ -1,14 +1,14 @@
-name: Generate snake animation
+name: Generate contribution graphs
 
 on:
   schedule:
-    - cron: "0 0 * * *" # run daily at mignight UTC
+    - cron: "0 0 * * *" # run daily at midnight UTC
 
   workflow_dispatch:
 
   push:
     branches:
-    - main
+    - master
 
 jobs:
   generate:
@@ -18,6 +18,9 @@ jobs:
     timeout-minutes: 10
 
     steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
     - name: generate snake.svg
       uses: Platane/snk@v3
       with:
@@ -39,7 +42,10 @@ jobs:
           dist/github-snake-dark.svg?palette=github-dark
           dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
 
-    - name: Deploy to GitHub Pages
+    - name: Generate static contribution graphs
+      run: python3 scripts/generate-static-contributions.py dist
+
+    - name: Publish contribution assets
       uses: crazy-max/ghaction-github-pages@v4
       with:
         target_branch: output
