@@ -27,3 +27,5 @@
     border-radius: 4px;
     color: #e83e8c;                     /* 可选：单行代码颜色 */
 }
+
+/* 日记页布局样式已内联到 src/pages/notes.html，避免外部 CSS 缓存导致布局失效 */

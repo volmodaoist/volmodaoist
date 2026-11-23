@@ -1,25 +1,18 @@
-[![volmodaoist](https://img.shields.io/badge/volmodaoist-github-blue?logo=github)](https://github.com/volmodaoist)
+#### About Me [![volmodaoist](https://img.shields.io/badge/volmodaoist-github-blue?logo=github)](https://github.com/volmodaoist)
 
-#### About Me
-He graduated with a Bachelor's degree from Shantou University, where he was mentored by Professors Cai Hao, Chen Yindong, and Xu Jianlong, and a Master's degree from Jinan University under the supervision of Professor Wang Ke. He is currently working in the AI PasS department at ByteDance.
+He graduated with a Bachelor's degree from Shantou University, where he was mentored by Professors Cai Hao, Chen Yindong, and Xu Jianlong, and a Master's degree from Jinan University under the supervision of Professor Wang Ke. He  published research papers in TII2022, PR2023, TNNLS2024, TMI2024, TAI2024, EAAI2025, and others.
 
 #### Education
-- B.Sc., Computer Science and Technology, Shantou University, 2018.06—2022.09  
-Full-time undergraduate program.
-- B.Sc., Computer Science and Technology, Hangzhou Dianzi University, 2020.06—2020.09  
-Undergraduate exchange program.
-- M.Sc., Computer Application Technology, Jinan University, 2022.06—2025.06
-Full-time graduate program.
 
-
-#### Internship Experience
-- Research and Development in the Technical Department at the Guangdong Information Security Center.
-- Quality Assurance and Data Services for AI Applications in the AI-PaaS Department at ByteDance Shenzhen.
-
-<!-- 实习经历可考虑展开 -->
-<!-- 在实习期间参与境内外敏感舆情分析项目，主要使用 Go 和 Python 进行开发，通过定时运行多组爬虫任务采集主流媒体及论坛数据，并开展测试、开发及基于 NLP 的舆情分析工作。本人定位并修复两类关键 Bug：UI 交互失效与 Cronjob 定时任务启动失败；同时完成两项优化：引入 JSON Schema 实现抓取数据的自动化格式校验，节省 1–3 人天校验成本；通过分块缓存策略优化日志写入逻辑，使其平均写入耗时降至原来的 25% 左右。 -->
-
+- B.Sc., Computer Science and Technology, Shantou University, 2018.06—2022.09 Full-time undergraduate program.
+- B.Sc., Computer Science and Technology, Hangzhou Dianzi University, 2020.06—2020.09 Undergraduate exchange program.
+- M.Sc., Computer Application Technology, Jinan University, 2022.06—2025.06 Full-time graduate program.
 
 #### Research Interests
-Agent Application,  AI Interpretability, AI Software Engineering,
 
+![Agent Applications](https://img.shields.io/badge/Agent%20Applications-7057FF?style=flat-square&logo=langchain&logoColor=white) ![AI Interpretability](https://img.shields.io/badge/AI%20Interpretability-0E8A16?style=flat-square&logo=pytorch&logoColor=white) ![AI Software Engineering](https://img.shields.io/badge/AI%20Software%20Engineering-0969DA?style=flat-square&logo=githubcopilot&logoColor=white)
+
+#### Internship Experience
+
+- Research and Development in the Technical Department at the Guangdong Information Security Center.
+- Quality Assurance and Data Services for AI Applications in the AI-PaaS Department at ByteDance Shenzhen.

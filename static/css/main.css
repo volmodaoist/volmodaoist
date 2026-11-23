@@ -54,6 +54,21 @@ section .main-body{
     line-height: 2.4rem;
 }
 
+#home .main-body {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+#home header h2 {
+    font-size: 2rem;
+    line-height: 1.4;
+}
+
+#home .main-body h4 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
 
 .bg-gradient-primary-to-secondary-light {
     background: linear-gradient(45deg, #fcfcfc, #ffffff) !important;

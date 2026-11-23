@@ -15,8 +15,8 @@ export class SearchBar {
             return; // 只有在有这个占位符的页面才会渲染
         // 动态设置占位符文案
         const placeholder = this.redirectUrl
-            ? "Search (Press Enter)..."
-            : "Search by title, tag...";
+            ? "搜索日记，按回车…"
+            : "按标题或标签搜索日记…";
         container.innerHTML = `
             <div class="input-group input-group-sm">
                 <span class="input-group-text bg-white border-end-0 transition-all"><i class="bi bi-search"></i></span>
@@ -40,7 +40,7 @@ export class SearchBar {
         // 监听键盘输入
         this.inputElement.addEventListener('keyup', (e) => {
             const query = this.inputElement.value.trim().toLowerCase();
-            // 如果当前在笔记页，支持实时搜索过滤
+            // 如果当前在日记页，支持实时搜索过滤
             if (this.onSearch) {
                 this.onSearch(query);
             }

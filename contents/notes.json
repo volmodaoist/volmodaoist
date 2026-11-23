@@ -1,23 +1,30 @@
 [
   {
-    "title": "个人博客问题分析与优化",
-    "date": "2024-04-05",
-    "description": "分析并记录个人博客构建过程之中遇到的各种问题。",
-    "tags": ["性能", "前端"],
-    "file": "博客问题分析.md"
+    "title": "本硕期间记录",
+    "date": "2026-11-23",
+    "description": "简要记录本硕期间的各种经历，以便日后回忆",
+    "tags": [
+      "科研",
+      "成长"
+    ],
+    "file": "本硕期间记录.md"
   },
   {
-    "title": "Welcome to my Notes",
-    "date": "2024-04-04",
-    "description": "This is the first note on my new blog system.",
-    "tags": ["hello", "blog"],
-    "file": "welcome.md"
+    "title": "个人空间说明ma",
+    "date": "2026-11-20",
+    "description": "简述个人博客的技术栈实现",
+    "tags": [
+      "技术"
+    ],
+    "file": "个人空间说明.md"
   },
   {
-    "title": "Learning Markdown",
-    "date": "2024-04-05",
-    "description": "A quick guide on how to use Markdown for notes.",
-    "tags": ["markdown", "guide"],
-    "file": "learning-markdown.md"
+    "title": "读研期间的实验技巧",
+    "date": "2024-10-30",
+    "description": "当初科研的方法论",
+    "tags": [
+      "科研"
+    ],
+    "file": "实验技巧.md"
   }
 ]
