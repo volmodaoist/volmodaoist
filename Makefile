@@ -1,8 +1,11 @@
-.PHONY: dev build clean
+.PHONY: dev build clean note-index
 
-build:
+build: note-index
 	@echo "Compiling TypeScript..."
 	@npm run build || npx tsc
+
+note-index:
+	@node scripts/generate-note-index.cjs
 
 dev: build
 	@echo "Starting local dev server at http://localhost:8000"
